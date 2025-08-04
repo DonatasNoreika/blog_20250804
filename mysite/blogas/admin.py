@@ -8,5 +8,11 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ['-created_at']
     search_fields = ['title', 'body']
     list_filter = ['created_at']
+    readonly_fields = ['id', 'created_at']
+
+    fieldsets = [
+        ("General", {"fields": ("title", "body")}),
+        ("Technical", {"fields": ("id", "created_at")}),
+    ]
 
 admin.site.register(Post, PostAdmin)
